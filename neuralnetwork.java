@@ -58,15 +58,40 @@ public class neuralnetwork{
         input2c = new double[4];
         outputc = new double[4];
 
-
+        // Initialize Weights to Random Values??
 
     }
 
-    /*
+
     public void trainNetwork(){
 
+        Scanner read = new Scanner(System.in);
+
+        // Prompts user to enter the maximum acceptable error rate which will be used to train the network.
+        System.out.println("Enter ideal max error rate:");
+        double threshold = read.nextDouble();
+
+        double error = 0;
+
+        // (MSE) - Mean Squared Error Calculation
+
+        // Initial test allows error to be initialized properly.
+        // for-loop runs through each training condition and we return the average of the error rates.
+        for(int i = 0; i < 4; i++)
+        {
+            error += Math.pow(outputc[i] - testNetwork(input1c[i], input2c[i]), 2); // Make sure to verify error calculation
+        }
+        error /= 4;
+
+        //Calculate Initial and set error
+
+        // Loop runs until we meet the user set threshold.
+        while(error > threshold);
+
+        // for loop runs through each training condition.
+
     }
-    */
+
 
     public double testNetwork(double inputf1, double inputf2){
 
