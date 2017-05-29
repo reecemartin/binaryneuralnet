@@ -57,11 +57,27 @@ public class neuralnetwork{
         input1c = new double[4];
         input2c = new double[4];
         outputc = new double[4];
-
-        // Initialize Weights to Random Values??
-
     }
 
+    public void weightGenerator(){
+
+        // Initializes all weights to random initial values
+        ha1a = Math.random();
+        ha1b = Math.random();
+        ha1bias = Math.random();
+        ha2a = Math.random();
+        ha2b = Math.random();
+        ha2bias = Math.random();
+        hb1a = Math.random();
+        hb1b = Math.random();
+        hb1bias = Math.random();
+        hb2a = Math.random();
+        hb2b = Math.random();
+        hb2bias = Math.random();
+        o1a = Math.random();
+        o1b = Math.random();
+        o1bias = Math.random();
+    }
 
     public void trainNetwork(){
 
