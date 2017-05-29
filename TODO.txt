@@ -1,2 +1,3 @@
+-Modularize Weights and Neurons for later expansion
 -Add Graphs and UI
 -Add Diagram
