@@ -87,6 +87,10 @@ public class neuralnetwork{
         System.out.println("Enter ideal max error rate:");
         double threshold = read.nextDouble();
 
+        // Prompts user to enter the learning rate which will be used to train the network.
+        System.out.println("Enter learning rate:");
+        double learningRate = read.nextDouble();
+
         double error = 0;
 
         // (MSE) - Mean Squared Error Calculation
@@ -95,11 +99,15 @@ public class neuralnetwork{
         // for-loop runs through each training condition and we return the average of the error rates.
         for(int i = 0; i < 4; i++)
         {
-            error += Math.pow(outputc[i] - testNetwork(input1c[i], input2c[i]), 2); // Make sure to verify error calculation
+            error += Math.pow(outputc[i] - testNetwork(input1c[i], input2c[i]), 2);
+            // Make sure to verify error calculation
         }
         error /= 4;
 
-        //Calculate Initial and set error
+        // Calculate Initial and set error
+        // NODE DELTAS FRM OUTPUT INWARDS
+        // Calculate Gradients
+
 
         // Loop runs until we meet the user set threshold.
         while(error > threshold);
@@ -126,7 +134,7 @@ public class neuralnetwork{
 
     /*
     public static double activationFunction(double value){
-
+    SIGMOID
     }
     */
 
