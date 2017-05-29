@@ -100,11 +100,24 @@ public class neuralnetwork{
         for(int i = 0; i < 4; i++)
         {
             error += Math.pow(outputc[i] - testNetwork(input1c[i], input2c[i]), 2);
-            // Make sure to verify error calculation
+            // Make sure to verify error calculation.
         }
         error /= 4;
 
-        // Calculate Initial and set error
+        // Calculate Initial and set error.
+        
+        // Repeat Code from testNetwork() needed for granualrity used in error correction (not yet implemented)
+        // Calculation for first layer of hidden neurons.
+        double hiddenLayerA1 = activationFunction(inputf1 * ha1a * inputf2 * ha1b * bias1 * ha1bias);
+        double hiddenLayerA2 = activationFunction(inputf1 * ha2a * inputf2 * ha2b * bias1 * ha2bias);
+
+        // Calculation for second layer of hidden neurons.
+        double hiddenLayerB1 = activationFunction(hiddenLayerA1 * hb1a * hiddenLayerA2 * hb1b * bias2 * hb1bias);
+        double hiddenLayerB2 = activationFunction(hiddenLayerA1 * hb2a * hiddenLayerA2 * hb2b * bias2 * hb2bias);
+
+        // Calculation for output.
+        double outputLayerResult = activationFunction(hiddenLayerB1);
+        
         // NODE DELTAS FRM OUTPUT INWARDS
         // Calculate Gradients
 
@@ -128,7 +141,8 @@ public class neuralnetwork{
         double hiddenLayerB2 = activationFunction(hiddenLayerA1 * hb2a * hiddenLayerA2 * hb2b * bias2 * hb2bias);
 
         //Calculation for output
-        return activationFunction(hiddenLayerB1);
+        double outputLayerResult = activationFunction(hiddenLayerB1);
+        return outputLayerResult
 
     }
 
