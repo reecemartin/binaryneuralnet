@@ -6,14 +6,13 @@ import java.util.Scanner;
 
 public class neuralnetwork{
 
-    // Variables for correct (trained) input and output values
+    // Variables for correct (trained) input and output values.
     private double[] input1c;
     private double[] input2c;
     private double[] outputc;
 
-    // Variables for neuron values
-
-    // Inputs are limited to the range of zero to one inclusive
+    // Variables for neuron values.
+    // Inputs are limited to the range of zero to one inclusive.
     private double input1;
     private double input2;
 
@@ -65,7 +64,6 @@ public class neuralnetwork{
     public void trainNetwork(){
 
         Scanner read = new Scanner(System.in);
-
         // Prompts user to enter the maximum acceptable error rate which will be used to train the network.
         System.out.println("Enter ideal max error rate:");
         double threshold = read.nextDouble();
@@ -80,8 +78,7 @@ public class neuralnetwork{
 
         // Initial test allows error to be initialized properly.
         // for-loop runs through each training condition and we return the average of the error rates.
-        for(int i = 0; i < 4; i++)
-        {
+        for(int i = 0; i < 4; i++){
             error += Math.pow(outputc[i] - testNetwork(input1c[i], input2c[i]), 2);
             // Make sure to verify error calculation
         }
@@ -91,13 +88,11 @@ public class neuralnetwork{
         // NODE DELTAS FRM OUTPUT INWARDS
         // Calculate Gradients
 
-
         // Loop runs until we meet the user set threshold.
         while(error > threshold);
 
         // for loop runs through each training condition.
         for(int i = 0; i < 4; i++) {
-
             // Calculation for first layer of hidden neurons
             double hiddenLayerA1 = activationFunction(input1c[i] * ha1a + input2c[i] * ha1b + bias1 * ha1bias);
             double hiddenLayerA2 = activationFunction(input1c[i] * ha2a + input2c[i] * ha2b + bias1 * ha2bias);
@@ -142,7 +137,6 @@ public class neuralnetwork{
 
 
     public double testNetwork(double inputf1, double inputf2){
-
         // Calculation for first layer of hidden neurons
         double hiddenLayerA1 = activationFunction(input1c[i] * ha1a + input2c[i] * ha1b + bias1 * ha1bias);
         double hiddenLayerA2 = activationFunction(input1c[i] * ha2a + input2c[i] * ha2b + bias1 * ha2bias);
@@ -150,7 +144,6 @@ public class neuralnetwork{
         // Calculation for output
         double outputResult = activationFunction(hiddenLayerA1 * o1a + hiddenLayerA2 * o1b + bias3 * o1bias);
         return outputResult;
-
     }
 
 
@@ -167,7 +160,7 @@ public class neuralnetwork{
 
 
     // Method used for user to input data to be trained to the neural network - data is entered in the form of a 3 X 4
-    // truth table and so only binary operator emulation can be achieved with this neural network implementation
+    // truth table and so only binary operator emulation can be achieved with this neural network implementation.
 
     public void inputTrainingData(){
         Scanner read = new Scanner(System.in);
@@ -182,13 +175,11 @@ public class neuralnetwork{
     }
 
     public static void main(String[] args) {
-
         // Initializes a new neural network
         neuralnetwork net = new neuralnetwork();
 
         // Calls method to prompt user to input data to be trained to the neural network
         net.inputTrainingData();
-
     }
 }
 
