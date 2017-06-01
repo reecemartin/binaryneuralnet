@@ -51,15 +51,15 @@ public class neuralnetwork{
 
         // Initializes all weights to random initial values, since these values are not constrained we multiply to
         // increase the variability.
-        ha1a = Math.random() * 10000 - 5000;
-        ha1b = Math.random() * 10000 - 5000;
-        ha1bias = Math.random() * 10000 - 5000;
-        ha2a = Math.random() * 10000 - 5000;
-        ha2b = Math.random() * 10000 - 5000;
-        ha2bias = Math.random() * 10000 - 5000;
-        o1a = Math.random() * 10000 - 5000;
-        o1b = Math.random() * 10000 - 5000;
-        o1bias = Math.random() * 10000 - 5000;
+        ha1a = Math.random();
+        ha1b = Math.random();
+        ha1bias = Math.random();
+        ha2a = Math.random();
+        ha2b = Math.random();
+        ha2bias = Math.random();
+        o1a = Math.random();
+        o1b = Math.random();
+        o1bias = Math.random();
     }
 
     public void trainNetwork(){
@@ -90,11 +90,6 @@ public class neuralnetwork{
             error += Math.pow(outputc[i] - testNetwork(input1c[i], input2c[i]), 2);
         }
         error /= 4;
-
-        // Calculate Initial and set error
-        // NODE DELTAS FRM OUTPUT INWARDS
-        // Calculate Gradients
-
 
         // Loop runs until we meet the user set threshold.
         while(error > threshold) {
@@ -188,6 +183,7 @@ public class neuralnetwork{
                 error += Math.pow(outputc[i] - testNetwork(input1c[i], input2c[i]), 2);
             }
             error /= 4;
+            System.out.println(error);
         }
     }
 
@@ -195,8 +191,8 @@ public class neuralnetwork{
     public double testNetwork(double inputf1, double inputf2){
 
         // Calculation for first layer of hidden neurons
-        double hiddenLayerA1 = activationFunction(input1c[i] * ha1a + input2c[i] * ha1b + bias1 * ha1bias);
-        double hiddenLayerA2 = activationFunction(input1c[i] * ha2a + input2c[i] * ha2b + bias1 * ha2bias);
+        double hiddenLayerA1 = activationFunction(inputf1 * ha1a + inputf2 * ha1b + bias1 * ha1bias);
+        double hiddenLayerA2 = activationFunction(inputf1 * ha2a + inputf2 * ha2b + bias1 * ha2bias);
 
         // Calculation for output
         double outputResult = activationFunction(hiddenLayerA1 * o1a + hiddenLayerA2 * o1b + bias3 * o1bias);
@@ -239,6 +235,34 @@ public class neuralnetwork{
 
         // Calls method to prompt user to input data to be trained to the neural network
         net.inputTrainingData();
+
+        net.weightGenerator();
+
+        System.out.println("1, 0");
+        System.out.println(net.testNetwork(1.0, 0.0));
+
+        System.out.println("1, 1");
+        System.out.println(net.testNetwork(1.0, 1.0));
+
+        System.out.println("0, 0");
+        System.out.println(net.testNetwork(0.0, 0.0));
+
+        System.out.println("0, 1");
+        System.out.println(net.testNetwork(0.0, 1.0));
+
+        net.trainNetwork();
+
+        System.out.println("1, 0");
+        System.out.println(net.testNetwork(1.0, 0.0));
+
+        System.out.println("1, 1");
+        System.out.println(net.testNetwork(1.0, 1.0));
+
+        System.out.println("0, 0");
+        System.out.println(net.testNetwork(0.0, 0.0));
+
+        System.out.println("0, 1");
+        System.out.println(net.testNetwork(0.0, 1.0));
 
     }
 }
