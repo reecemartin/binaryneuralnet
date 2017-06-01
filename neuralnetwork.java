@@ -92,7 +92,8 @@ public class neuralnetwork{
         error /= 4;
 
         // Loop runs until we meet the user set threshold.
-        while(error > threshold) {
+        int x = 0;
+        while(x < 10000) {
 
             // The Previous Weight Deltas
             double alpha[] = {0, 0, 0, 0, 0, 0, 0, 0, 0} ;
@@ -184,6 +185,7 @@ public class neuralnetwork{
             }
             error /= 4;
             System.out.println(error);
+            x++;
         }
     }
 
