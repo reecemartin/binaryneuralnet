@@ -145,39 +145,39 @@ public class neuralnetwork{
 
                 // Backpropagation
 
-                double ha1aDelta =
+                double ha1aDelta = -learningRate * ha1aGradient + momentum * alpha[0];
                         ha1a += ha1aDelta;
                 alpha[0] = ha1aDelta;
 
-                double ha1bDelta =
+                double ha1bDelta = -learningRate * ha1bGradient + momentum * alpha[1];
                         ha1b += ha1bDelta;
                 alpha[1] = ha1bDelta;
 
-                double ha1biasDelta =
+                double ha1biasDelta = -learningRate * ha1biasGradient + momentum * alpha[2];
                         ha1bias += ha1biasDelta;
                 alpha[2] = ha1biasDelta;
 
-                double ha2aDelta =
+                double ha2aDelta = -learningRate * ha2aGradient + momentum * alpha[3];
                         ha2a += ha2aDelta;
                 alpha[3] = ha2aDelta;
 
-                double ha2bDelta =
+                double ha2bDelta = -learningRate * ha2bGradient + momentum * alpha[4];
                         ha2b += ha2bDelta;
                 alpha[4] = ha2bDelta;
 
-                double ha2biasDelta =
+                double ha2biasDelta = -learningRate * ha2biasGradient + momentum * alpha[5];
                         ha2bias += ha2biasDelta;
                 alpha[5] = ha2biasDelta;
 
-                double o1aDelta =
+                double o1aDelta =  -learningRate * o1aGradient + momentum * alpha[6];
                         o1a += o1aDelta;
                 alpha[6] = o1aDelta;
 
-                double o1bDelta =
+                double o1bDelta =  -learningRate * o1bGradient + momentum * alpha[7];
                         o1b += o1bDelta;
                 alpha[7] = o1bDelta;
 
-                double o1biasDelta =
+                double o1biasDelta = -learningRate * o1biasGradient + momentum * alpha[8];
                         o1bias += o1biasDelta;
                 alpha[0] = ha1aDelta;
 
