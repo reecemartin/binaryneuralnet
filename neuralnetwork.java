@@ -93,7 +93,7 @@ public class neuralnetwork{
 
         // Loop runs until we meet the user set threshold.
         int x = 0;
-        while(x < 10000) {
+        while(x < 1000000) {
 
             // The Previous Weight Deltas
             double alpha[] = {0, 0, 0, 0, 0, 0, 0, 0, 0} ;
@@ -141,39 +141,39 @@ public class neuralnetwork{
 
                 // Backpropagation
 
-                double ha1aDelta = -learningRate * ha1aGradient + momentum * alpha[0];
+                double ha1aDelta = learningRate * ha1aGradient + momentum * alpha[0];
                         ha1a += ha1aDelta;
                 alpha[0] = ha1aDelta;
 
-                double ha1bDelta = -learningRate * ha1bGradient + momentum * alpha[1];
+                double ha1bDelta = learningRate * ha1bGradient + momentum * alpha[1];
                         ha1b += ha1bDelta;
                 alpha[1] = ha1bDelta;
 
-                double ha1biasDelta = -learningRate * ha1biasGradient + momentum * alpha[2];
+                double ha1biasDelta = learningRate * ha1biasGradient + momentum * alpha[2];
                         ha1bias += ha1biasDelta;
                 alpha[2] = ha1biasDelta;
 
-                double ha2aDelta = -learningRate * ha2aGradient + momentum * alpha[3];
+                double ha2aDelta = learningRate * ha2aGradient + momentum * alpha[3];
                         ha2a += ha2aDelta;
                 alpha[3] = ha2aDelta;
 
-                double ha2bDelta = -learningRate * ha2bGradient + momentum * alpha[4];
+                double ha2bDelta = learningRate * ha2bGradient + momentum * alpha[4];
                         ha2b += ha2bDelta;
                 alpha[4] = ha2bDelta;
 
-                double ha2biasDelta = -learningRate * ha2biasGradient + momentum * alpha[5];
+                double ha2biasDelta = learningRate * ha2biasGradient + momentum * alpha[5];
                         ha2bias += ha2biasDelta;
                 alpha[5] = ha2biasDelta;
 
-                double o1aDelta =  -learningRate * o1aGradient + momentum * alpha[6];
+                double o1aDelta =  learningRate * o1aGradient + momentum * alpha[6];
                         o1a += o1aDelta;
                 alpha[6] = o1aDelta;
 
-                double o1bDelta =  -learningRate * o1bGradient + momentum * alpha[7];
+                double o1bDelta =  learningRate * o1bGradient + momentum * alpha[7];
                         o1b += o1bDelta;
                 alpha[7] = o1bDelta;
 
-                double o1biasDelta = -learningRate * o1biasGradient + momentum * alpha[8];
+                double o1biasDelta = learningRate * o1biasGradient + momentum * alpha[8];
                         o1bias += o1biasDelta;
                 alpha[0] = ha1aDelta;
 
@@ -220,13 +220,33 @@ public class neuralnetwork{
 
     public void inputTrainingData(){
         Scanner read = new Scanner(System.in);
-        for (int i = 0; i < 4; i++) {
-            System.out.println("Enter the first input for row # " + (i + 1));
-            input1c[i] = read.nextInt();
-            System.out.println("Enter the second input for row # " + (i + 1));
-            input2c[i] = read.nextInt();
-            System.out.println("Enter the output for row #" + (i + 1));
-            outputc[i] = read.nextInt();
+        System.out.println("Enter y for autoentry or n for custom entry:");
+        String selection = read.nextLine();
+
+        if(selection.equals("y")) {
+            input1c[0] = 1;
+            input1c[1] = 1;
+            input1c[2] = 0;
+            input1c[3] = 0;
+            input2c[0] = 1;
+            input2c[1] = 0;
+            input2c[2] = 1;
+            input2c[3] = 0;
+            outputc[0] = 0;
+            outputc[1] = 1;
+            outputc[2] = 1;
+            outputc[3] = 0;
+
+        }else{
+
+            for (int i = 0; i < 4; i++) {
+                System.out.println("Enter the first input for row # " + (i + 1));
+                input1c[i] = read.nextInt();
+                System.out.println("Enter the second input for row # " + (i + 1));
+                input2c[i] = read.nextInt();
+                System.out.println("Enter the output for row #" + (i + 1));
+                outputc[i] = read.nextInt();
+            }
         }
     }
 
