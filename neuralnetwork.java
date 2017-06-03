@@ -300,41 +300,58 @@ public class neuralnetwork {
 
 
     public static void main(String[] args) {
+        String runSim = "y";
 
-        // Initializes a new neural network
-        neuralnetwork net = new neuralnetwork();
+        while(runSim.equals("y")) {
 
-        // Calls method to prompt user to input data to be trained to the neural network
-        net.inputTrainingData();
+            if (runSim.equals("n")){
+                break;
+            }
+            Scanner read = new Scanner(System.in);
+            System.out.println("\nRun simulation y/n?");
+            runSim = read.nextLine();
+            if (runSim.equals("n")){
+                break;
+            }
 
-        net.weightGenerator();
 
-        System.out.println("1, 0");
-        System.out.println(net.testNetwork(1.0, 0.0));
+            // Initializes a new neural network
+            neuralnetwork net = new neuralnetwork();
 
-        System.out.println("1, 1");
-        System.out.println(net.testNetwork(1.0, 1.0));
+            // Calls method to prompt user to input data to be trained to the neural network
+            net.inputTrainingData();
 
-        System.out.println("0, 0");
-        System.out.println(net.testNetwork(0.0, 0.0));
+            net.weightGenerator();
+            
+            System.out.println("\nRaw Output:\n");
+            System.out.println("1, 0");
+            System.out.println(net.testNetwork(1.0, 0.0));
 
-        System.out.println("0, 1");
-        System.out.println(net.testNetwork(0.0, 1.0));
+            System.out.println("1, 1");
+            System.out.println(net.testNetwork(1.0, 1.0));
 
-        net.trainNetwork();
+            System.out.println("0, 0");
+            System.out.println(net.testNetwork(0.0, 0.0));
 
-        System.out.println("1, 0");
-        System.out.println(net.testNetwork(1.0, 0.0));
+            System.out.println("0, 1");
+            System.out.println(net.testNetwork(0.0, 1.0));
+            System.out.println("\n");
 
-        System.out.println("1, 1");
-        System.out.println(net.testNetwork(1.0, 1.0));
+            net.trainNetwork();
+            
+            System.out.println("\nTrained Output:\n");
+            System.out.println("1, 0");
+            System.out.println(net.testNetwork(1.0, 0.0));
 
-        System.out.println("0, 0");
-        System.out.println(net.testNetwork(0.0, 0.0));
+            System.out.println("1, 1");
+            System.out.println(net.testNetwork(1.0, 1.0));
 
-        System.out.println("0, 1");
-        System.out.println(net.testNetwork(0.0, 1.0));
+            System.out.println("0, 0");
+            System.out.println(net.testNetwork(0.0, 0.0));
 
+            System.out.println("0, 1");
+            System.out.println(net.testNetwork(0.0, 1.0));
+        }
     }
 }
 
