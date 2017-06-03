@@ -71,20 +71,36 @@ public class neuralnetwork {
     public void trainNetwork() {
 
         Scanner read = new Scanner(System.in);
+        System.out.println("\nExpress or Custom Settings e/c?");
+        String settingsSelector = read.nextLine();
 
-        // Prompts user to enter the maximum acceptable error rate which will be used to train the network.
-        System.out.println("Enter ideal max error rate:");
-        double threshold = read.nextDouble();
+        double threshold;
+        double learningRate;
+        double momentum;
 
-        // Prompts user to enter the learning rate which will be used to train the network.
-        System.out.println("Enter learning rate (Tip: try 0.5):");
-        double learningRate = read.nextDouble();
-        // Learning Rate is sometimes referred to as Epsilon.
+        if (settingsSelector.equals("e")){
 
-        // Prompts user to enter the momentum which will be used to train the network.
-        System.out.println("Enter momentum (Tip: try 0.2):");
-        double momentum = read.nextDouble();
-        // Momentum is sometimes referred to as Alpha.
+            threshold = 0.0001;
+            learningRate = 0.5;
+            momentum = 0.2;
+
+        }else {
+
+            // Prompts user to enter the maximum acceptable error rate which will be used to train the network.
+            System.out.println("\nEnter ideal max error rate:");
+            threshold = read.nextDouble();
+
+            // Prompts user to enter the learning rate which will be used to train the network.
+            System.out.println("\nEnter learning rate:");
+            learningRate = read.nextDouble();
+            // Learning Rate is sometimes referred to as Epsilon.
+
+            // Prompts user to enter the momentum which will be used to train the network.
+            System.out.println("\nEnter momentum:");
+            momentum = read.nextDouble();
+            // Momentum is sometimes referred to as Alpha.
+
+        }
 
         double error = 0;
 
@@ -99,8 +115,7 @@ public class neuralnetwork {
         error /= 4;
 
         // Loop runs until we meet the user set threshold.
-        int x = 0;
-        while (x < 1000000) {
+        while (error > threshold) {
 
             // The Previous Weight Deltas
             double alpha[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -190,8 +205,8 @@ public class neuralnetwork {
                 error += Math.pow(outputc[i] - testNetwork(input1c[i], input2c[i]), 2);
             }
             error /= 4;
-            System.out.println(error);
-            x++;
+            System.out.println("Error:" + error);
+
         }
     }
 
@@ -308,7 +323,7 @@ public class neuralnetwork {
                 break;
             }
             Scanner read = new Scanner(System.in);
-            System.out.println("\nRun simulation y/n?");
+            System.out.println("\nRun Simulation y/n?");
             runSim = read.nextLine();
             if (runSim.equals("n")){
                 break;
@@ -322,7 +337,7 @@ public class neuralnetwork {
             net.inputTrainingData();
 
             net.weightGenerator();
-            
+
             System.out.println("\nRaw Output:\n");
             System.out.println("1, 0");
             System.out.println(net.testNetwork(1.0, 0.0));
@@ -338,7 +353,7 @@ public class neuralnetwork {
             System.out.println("\n");
 
             net.trainNetwork();
-            
+
             System.out.println("\nTrained Output:\n");
             System.out.println("1, 0");
             System.out.println(net.testNetwork(1.0, 0.0));
@@ -354,4 +369,3 @@ public class neuralnetwork {
         }
     }
 }
-
