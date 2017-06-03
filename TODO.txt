@@ -2,4 +2,5 @@
 -Add Graphs and UI
 -Add Diagram
 -Add Autoentry for other operations
-Streamline and Clean code
+-Streamline and Clean code
+-Multithread
