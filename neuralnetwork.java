@@ -4,42 +4,44 @@
 
 import java.util.Scanner;
 
-public class neuralnetwork{
+public class neuralnetwork {
 
     // Variables for correct (trained) input and output values
-    public double[] input1c;
-    public double[] input2c;
-    public double[] outputc;
+    private double[] input1c;
+    private double[] input2c;
+    private double[] outputc;
 
     // Variables for neuron values
 
     // Inputs are limited to the range of zero to one inclusive
-    public double input1;
-    public double input2;
+    private double input1;
+    private double input2;
 
-    public double hiddenLayerA1Neuron;
-    public double hiddenLayerA2Neuron;
-    public double bias1 = 1;
-    public double bias2 = 1;
-    public double bias3 = 1;
+    private double hiddenLayerA1Neuron;
+    private double hiddenLayerA2Neuron;
+    private double bias1 = 1;
+    private double bias2 = 1;
+    private double bias3 = 1;
 
     // Weights (layer type-layer-neuron number-weight)
     // Weights for Hidden Layer A Neuron 1
-    public double ha1a;
-    public double ha1b;
-    public double ha1bias;
+    private double ha1a;
+    private double ha1b;
+    private double ha1bias;
 
     // Weights for Hidden Layer A Neuron 2
-    public double ha2a;
-    public double ha2b;
-    public double ha2bias;
+    private double ha2a;
+    private double ha2b;
+    private double ha2bias;
 
     // Weights for Output Neuron
-    public double o1a;
-    public double o1b;
-    public double o1bias;
+    private double o1a;
+    private double o1b;
+    private double o1bias;
 
-    public neuralnetwork(){
+
+    // Constructor
+    public neuralnetwork() {
 
         // Ideal Values (To Be Used in Training)
         input1c = new double[4];
@@ -47,7 +49,9 @@ public class neuralnetwork{
         outputc = new double[4];
     }
 
-    public void weightGenerator(){
+
+    // Method used to generate random weights
+    public void weightGenerator() {
 
         // Initializes all weights to random initial values, since these values are not constrained we multiply to
         // increase the variability.
@@ -62,7 +66,9 @@ public class neuralnetwork{
         o1bias = Math.random();
     }
 
-    public void trainNetwork(){
+
+    // Method used to train Network
+    public void trainNetwork() {
 
         Scanner read = new Scanner(System.in);
 
@@ -86,17 +92,18 @@ public class neuralnetwork{
 
         // Initial test allows error to be initialized properly.
         // for-loop runs through each training condition and we return the average of the error rates.
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             error += Math.pow(outputc[i] - testNetwork(input1c[i], input2c[i]), 2);
         }
+
         error /= 4;
 
         // Loop runs until we meet the user set threshold.
         int x = 0;
-        while(x < 1000000) {
+        while (x < 1000000) {
 
             // The Previous Weight Deltas
-            double alpha[] = {0, 0, 0, 0, 0, 0, 0, 0, 0} ;
+            double alpha[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
             // for loop runs through each training condition.
             for (int i = 0; i < 4; i++) {
@@ -140,47 +147,46 @@ public class neuralnetwork{
                 double o1biasGradient = outputLayerDelta;
 
                 // Backpropagation
-
                 double ha1aDelta = learningRate * ha1aGradient + momentum * alpha[0];
-                        ha1a += ha1aDelta;
+                ha1a += ha1aDelta;
                 alpha[0] = ha1aDelta;
 
                 double ha1bDelta = learningRate * ha1bGradient + momentum * alpha[1];
-                        ha1b += ha1bDelta;
+                ha1b += ha1bDelta;
                 alpha[1] = ha1bDelta;
 
                 double ha1biasDelta = learningRate * ha1biasGradient + momentum * alpha[2];
-                        ha1bias += ha1biasDelta;
+                ha1bias += ha1biasDelta;
                 alpha[2] = ha1biasDelta;
 
                 double ha2aDelta = learningRate * ha2aGradient + momentum * alpha[3];
-                        ha2a += ha2aDelta;
+                ha2a += ha2aDelta;
                 alpha[3] = ha2aDelta;
 
                 double ha2bDelta = learningRate * ha2bGradient + momentum * alpha[4];
-                        ha2b += ha2bDelta;
+                ha2b += ha2bDelta;
                 alpha[4] = ha2bDelta;
 
                 double ha2biasDelta = learningRate * ha2biasGradient + momentum * alpha[5];
-                        ha2bias += ha2biasDelta;
+                ha2bias += ha2biasDelta;
                 alpha[5] = ha2biasDelta;
 
-                double o1aDelta =  learningRate * o1aGradient + momentum * alpha[6];
-                        o1a += o1aDelta;
+                double o1aDelta = learningRate * o1aGradient + momentum * alpha[6];
+                o1a += o1aDelta;
                 alpha[6] = o1aDelta;
 
-                double o1bDelta =  learningRate * o1bGradient + momentum * alpha[7];
-                        o1b += o1bDelta;
+                double o1bDelta = learningRate * o1bGradient + momentum * alpha[7];
+                o1b += o1bDelta;
                 alpha[7] = o1bDelta;
 
                 double o1biasDelta = learningRate * o1biasGradient + momentum * alpha[8];
-                        o1bias += o1biasDelta;
+                o1bias += o1biasDelta;
                 alpha[0] = ha1aDelta;
 
 
             }
 
-            for(int i = 0; i < 4; i++) {
+            for (int i = 0; i < 4; i++) {
                 error += Math.pow(outputc[i] - testNetwork(input1c[i], input2c[i]), 2);
             }
             error /= 4;
@@ -189,8 +195,8 @@ public class neuralnetwork{
         }
     }
 
-
-    public double testNetwork(double inputf1, double inputf2){
+    // Method for Network Evaluation
+    public double testNetwork(double inputf1, double inputf2) {
 
         // Calculation for first layer of hidden neurons
         double hiddenLayerA1 = activationFunction(inputf1 * ha1a + inputf2 * ha1b + bias1 * ha1bias);
@@ -203,52 +209,95 @@ public class neuralnetwork{
     }
 
 
-    public static double activationFunction(double value){
+    // Activation Functions
+    public static double activationFunction(double value) {
         // Sigmoid Activation Function
         return 1 / (1 + Math.pow(Math.E, -value));
     }
 
-    public static  double activationFunctionDerivative(double value){
+    public static double activationFunctionDerivative(double value) {
         // Derivative of Sigmoid Function
         return (Math.pow(Math.E, -value)) / Math.pow((1 + Math.pow(Math.E, -value)), 2);
     }
 
 
-
     // Method used for user to input data to be trained to the neural network - data is entered in the form of a 3 X 4
     // truth table and so only binary operator emulation can be achieved with this neural network implementation
-
-    public void inputTrainingData(){
+    public void inputTrainingData() {
         Scanner read = new Scanner(System.in);
-        System.out.println("Enter y for autoentry or n for custom entry:");
-        String selection = read.nextLine();
+        boolean escape = false;
 
-        if(selection.equals("y")) {
-            input1c[0] = 1;
-            input1c[1] = 1;
-            input1c[2] = 0;
-            input1c[3] = 0;
-            input2c[0] = 1;
-            input2c[1] = 0;
-            input2c[2] = 1;
-            input2c[3] = 0;
-            outputc[0] = 0;
-            outputc[1] = 1;
-            outputc[2] = 1;
-            outputc[3] = 0;
+        while (!escape) {
+            System.out.println("Enter XOR for Exclusive Or, OR for Or, AND for And, or C for custom:");
+            String selection = read.nextLine();
 
-        }else{
+            if (selection.equals("OR")) {
+                input1c[0] = 1;
+                input1c[1] = 1;
+                input1c[2] = 0;
+                input1c[3] = 0;
+                input2c[0] = 1;
+                input2c[1] = 0;
+                input2c[2] = 1;
+                input2c[3] = 0;
+                outputc[0] = 1;
+                outputc[1] = 1;
+                outputc[2] = 1;
+                outputc[3] = 0;
+                System.out.println("Or Operator Selected");
+                escape = true;
+            }
 
-            for (int i = 0; i < 4; i++) {
-                System.out.println("Enter the first input for row # " + (i + 1));
-                input1c[i] = read.nextInt();
-                System.out.println("Enter the second input for row # " + (i + 1));
-                input2c[i] = read.nextInt();
-                System.out.println("Enter the output for row #" + (i + 1));
-                outputc[i] = read.nextInt();
+            if (selection.equals("AND")) {
+                input1c[0] = 1;
+                input1c[1] = 1;
+                input1c[2] = 0;
+                input1c[3] = 0;
+                input2c[0] = 1;
+                input2c[1] = 0;
+                input2c[2] = 1;
+                input2c[3] = 0;
+                outputc[0] = 1;
+                outputc[1] = 0;
+                outputc[2] = 0;
+                outputc[3] = 0;
+                System.out.println("And Operator Selected");
+                escape = true;
+            }
+
+            if (selection.equals("XOR")) {
+                input1c[0] = 1;
+                input1c[1] = 1;
+                input1c[2] = 0;
+                input1c[3] = 0;
+                input2c[0] = 1;
+                input2c[1] = 0;
+                input2c[2] = 1;
+                input2c[3] = 0;
+                outputc[0] = 0;
+                outputc[1] = 1;
+                outputc[2] = 1;
+                outputc[3] = 0;
+                System.out.println("Exclusive Or Operator Selected");
+                escape = true;
+            }
+
+            if (selection.equals("C")) {
+
+                System.out.println("Custom Input Selected");
+                for (int i = 0; i < 4; i++) {
+                    System.out.println("Enter the first input for row # " + (i + 1));
+                    input1c[i] = read.nextInt();
+                    System.out.println("Enter the second input for row # " + (i + 1));
+                    input2c[i] = read.nextInt();
+                    System.out.println("Enter the output for row #" + (i + 1));
+                    outputc[i] = read.nextInt();
+                }
+                escape = true;
             }
         }
     }
+
 
     public static void main(String[] args) {
 
