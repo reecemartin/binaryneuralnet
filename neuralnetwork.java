@@ -211,19 +211,7 @@ public class neuralnetwork {
 
     }
 
-
-    // Activation Functions
-    public static double activationFunction(double value) {
-        // Sigmoid Activation Function
-        return 1 / (1 + Math.pow(Math.E, -value));
-    }
-
-    public static double activationFunctionDerivative(double value) {
-        // Derivative of Sigmoid Function
-        return (Math.pow(Math.E, -value)) / Math.pow((1 + Math.pow(Math.E, -value)), 2);
-    }
-
-
+    
     // Method used for user to input data to be trained to the neural network - data is entered in the form of a 3 X 4
     // truth table and so only binary operator emulation can be achieved with this neural network implementation
     public void inputTrainingData() {
@@ -299,6 +287,18 @@ public class neuralnetwork {
                 escape = true;
             }
         }
+    }
+
+
+    // Activation Functions
+    public static double activationFunction(double value) {
+        // Sigmoid Activation Function
+        return 1 / (1 + Math.pow(Math.E, -value));
+    }
+
+    public static double activationFunctionDerivative(double value) {
+        // Derivative of Sigmoid Function
+        return (Math.pow(Math.E, -value)) / Math.pow((1 + Math.pow(Math.E, -value)), 2);
     }
 
     public void printWeights(){
