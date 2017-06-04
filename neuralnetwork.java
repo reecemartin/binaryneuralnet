@@ -113,6 +113,7 @@ public class neuralnetwork {
         }
 
         error /= 4;
+        int counter = 0;
 
         // Loop runs until we meet the user set threshold.
         while (error > threshold) {
@@ -206,8 +207,11 @@ public class neuralnetwork {
             }
             error /= 4;
             System.out.println("Error:" + error);
+            counter++;
 
         }
+
+        System.out.println("\nReached " + threshold + " Mean Squared Error, in " + counter + " iterations.\n");
     }
 
     // Method for Network Evaluation
@@ -366,6 +370,31 @@ public class neuralnetwork {
 
             System.out.println("0, 1");
             System.out.println(net.testNetwork(0.0, 1.0));
+
+            System.out.println("Get weights y/n?");
+            String getWeightResponse = read.nextLine();
+
+            if (getWeightResponse.equals("y")){
+
+                System.out.println("Weights:");
+
+                System.out.println("\nHidden Layer Neuron 1:");
+                System.out.println("Weight A: " + net.ha1a);
+                System.out.println("Weight B: " + net.ha1b);
+                System.out.println("Weight Bias: " + net.ha1bias);
+
+                System.out.println("\nHidden Layer Neuron 2:");
+                System.out.println("Weight A: " + net.ha2a);
+                System.out.println("Weight B: " + net.ha2b);
+                System.out.println("Weight Bias: " + net.ha2bias);
+
+                System.out.println("\nOutput Neuron:");
+                System.out.println("Weight A: " + net.o1a);
+                System.out.println("Weight B: " + net.o1b);
+                System.out.println("Weight Bias: " + net.o1bias);
+
+
+            }
         }
     }
 }
