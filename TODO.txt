@@ -1,6 +1,8 @@
--Modularize Weights and Neurons for later expansion
--Add Graphs and UI
--Add Diagram
--Add Autoentry for other operations
--Streamline and Clean code
--Multithread
+- Reimplement in Tensor Flow
+
+- Modularize Weights and Neurons for later expansion
+- Add Graphs and UI
+- Add Diagram
+- Add Autoentry for other operations
+- Streamline and Clean code
+- Multithread
