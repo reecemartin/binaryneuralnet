@@ -316,6 +316,25 @@ public class neuralnetwork {
             }
         }
     }
+    
+    public void printWeights(){
+        System.out.println("Weights:");
+
+        System.out.println("\nHidden Layer Neuron 1:");
+        System.out.println("Weight A: " + ha1a);
+        System.out.println("Weight B: " + ha1b);
+        System.out.println("Weight Bias: " + ha1bias);
+
+        System.out.println("\nHidden Layer Neuron 2:");
+        System.out.println("Weight A: " + ha2a);
+        System.out.println("Weight B: " + ha2b);
+        System.out.println("Weight Bias: " + ha2bias);
+
+        System.out.println("\nOutput Neuron:");
+        System.out.println("Weight A: " + o1a);
+        System.out.println("Weight B: " + o1b);
+        System.out.println("Weight Bias: " + o1bias);
+    }
 
 
     public static void main(String[] args) {
@@ -332,8 +351,7 @@ public class neuralnetwork {
             if (runSim.equals("n")){
                 break;
             }
-
-
+            
             // Initializes a new neural network
             neuralnetwork net = new neuralnetwork();
 
@@ -346,23 +364,7 @@ public class neuralnetwork {
             String getWeightResponse = read.nextLine();
 
             if (getWeightResponse.equals("y")) {
-
-                System.out.println("Weights:");
-
-                System.out.println("\nHidden Layer Neuron 1:");
-                System.out.println("Weight A: " + net.ha1a);
-                System.out.println("Weight B: " + net.ha1b);
-                System.out.println("Weight Bias: " + net.ha1bias);
-
-                System.out.println("\nHidden Layer Neuron 2:");
-                System.out.println("Weight A: " + net.ha2a);
-                System.out.println("Weight B: " + net.ha2b);
-                System.out.println("Weight Bias: " + net.ha2bias);
-
-                System.out.println("\nOutput Neuron:");
-                System.out.println("Weight A: " + net.o1a);
-                System.out.println("Weight B: " + net.o1b);
-                System.out.println("Weight Bias: " + net.o1bias);
+                net.printWeights();
             }
 
             System.out.println("\nRaw Output:\n");
@@ -397,26 +399,8 @@ public class neuralnetwork {
             System.out.println("\nGet weights y/n?");
             getWeightResponse = read.nextLine();
 
-            if (getWeightResponse.equals("y")){
-
-                System.out.println("Weights:");
-
-                System.out.println("\nHidden Layer Neuron 1:");
-                System.out.println("Weight A: " + net.ha1a);
-                System.out.println("Weight B: " + net.ha1b);
-                System.out.println("Weight Bias: " + net.ha1bias);
-
-                System.out.println("\nHidden Layer Neuron 2:");
-                System.out.println("Weight A: " + net.ha2a);
-                System.out.println("Weight B: " + net.ha2b);
-                System.out.println("Weight Bias: " + net.ha2bias);
-
-                System.out.println("\nOutput Neuron:");
-                System.out.println("Weight A: " + net.o1a);
-                System.out.println("Weight B: " + net.o1b);
-                System.out.println("Weight Bias: " + net.o1bias);
-
-
+            if (getWeightResponse.equals("y")) {
+                net.printWeights();
             }
         }
     }
