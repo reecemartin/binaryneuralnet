@@ -7,38 +7,26 @@ import java.util.Scanner;
 public class neuralnetwork {
 
     // Variables for correct (trained) input and output values
-    private double[] input1c;
-    private double[] input2c;
-    private double[] outputc;
+    private double[] input1c, input2c, outputc;
 
     // Variables for neuron values
 
     // Inputs are limited to the range of zero to one inclusive
-    private double input1;
-    private double input2;
+    private double input1, input2;
 
-    private double hiddenLayerA1Neuron;
-    private double hiddenLayerA2Neuron;
     private double bias1 = 1;
     private double bias2 = 1;
     private double bias3 = 1;
 
     // Weights (layer type-layer-neuron number-weight)
     // Weights for Hidden Layer A Neuron 1
-    private double ha1a;
-    private double ha1b;
-    private double ha1bias;
+    private double ha1a, ha1b, ha1bias;
 
     // Weights for Hidden Layer A Neuron 2
-    private double ha2a;
-    private double ha2b;
-    private double ha2bias;
+    private double ha2a, ha2b, ha2bias;
 
     // Weights for Output Neuron
-    private double o1a;
-    private double o1b;
-    private double o1bias;
-
+    private double o1a, o1b, o1bias;
 
     // Constructor
     public neuralnetwork() {
@@ -74,9 +62,7 @@ public class neuralnetwork {
         System.out.println("\nExpress or Custom Settings e/c?");
         String settingsSelector = read.nextLine();
 
-        double threshold;
-        double learningRate;
-        double momentum;
+        double threshold, learningRate, momentum;
 
         if (settingsSelector.equals("e")){
 
@@ -99,13 +85,11 @@ public class neuralnetwork {
             System.out.println("\nEnter momentum:");
             momentum = read.nextDouble();
             // Momentum is sometimes referred to as Alpha.
-
         }
 
         double error = 0;
 
         // (MSE) - Mean Squared Error Calculation
-
         // Initial test allows error to be initialized properly.
         // for-loop runs through each training condition and we return the average of the error rates.
         for (int i = 0; i < 4; i++) {
@@ -316,7 +300,7 @@ public class neuralnetwork {
             }
         }
     }
-    
+
     public void printWeights(){
         System.out.println("Weights:");
 
@@ -337,6 +321,22 @@ public class neuralnetwork {
     }
 
 
+    public void printResults(){
+        System.out.println("1, 0");
+        System.out.println(this.testNetwork(1.0, 0.0));
+
+        System.out.println("1, 1");
+        System.out.println(this.testNetwork(1.0, 1.0));
+
+        System.out.println("0, 0");
+        System.out.println(this.testNetwork(0.0, 0.0));
+
+        System.out.println("0, 1");
+        System.out.println(this.testNetwork(0.0, 1.0));
+        System.out.println("\n");
+    }
+
+
     public static void main(String[] args) {
         String runSim = "y";
 
@@ -351,7 +351,7 @@ public class neuralnetwork {
             if (runSim.equals("n")){
                 break;
             }
-            
+
             // Initializes a new neural network
             neuralnetwork net = new neuralnetwork();
 
@@ -360,6 +360,7 @@ public class neuralnetwork {
 
             net.weightGenerator();
 
+            // Prints out Pre=Training Weights
             System.out.println("\nGet weights y/n?");
             String getWeightResponse = read.nextLine();
 
@@ -368,34 +369,14 @@ public class neuralnetwork {
             }
 
             System.out.println("\nRaw Output:\n");
-            System.out.println("1, 0");
-            System.out.println(net.testNetwork(1.0, 0.0));
-
-            System.out.println("1, 1");
-            System.out.println(net.testNetwork(1.0, 1.0));
-
-            System.out.println("0, 0");
-            System.out.println(net.testNetwork(0.0, 0.0));
-
-            System.out.println("0, 1");
-            System.out.println(net.testNetwork(0.0, 1.0));
-            System.out.println("\n");
+            net.printResults();
 
             net.trainNetwork();
 
             System.out.println("\nTrained Output:\n");
-            System.out.println("1, 0");
-            System.out.println(net.testNetwork(1.0, 0.0));
+            net.printResults();
 
-            System.out.println("1, 1");
-            System.out.println(net.testNetwork(1.0, 1.0));
-
-            System.out.println("0, 0");
-            System.out.println(net.testNetwork(0.0, 0.0));
-
-            System.out.println("0, 1");
-            System.out.println(net.testNetwork(0.0, 1.0));
-
+            // Prints out Post-Training Weights
             System.out.println("\nGet weights y/n?");
             getWeightResponse = read.nextLine();
 
