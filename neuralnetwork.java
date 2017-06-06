@@ -202,16 +202,16 @@ public class neuralnetwork {
     public double testNetwork(double inputf1, double inputf2) {
 
         // Calculation for first layer of hidden neurons
-        double hiddenLayerA1 = activationFunction(inputf1 * ha1a + inputf2 * ha1b + bias1 * ha1bias);
-        double hiddenLayerA2 = activationFunction(inputf1 * ha2a + inputf2 * ha2b + bias1 * ha2bias);
+        double hiddenLayerA1 = activationFunction(inputf1 * this.ha1a + inputf2 * this.ha1b + this.bias1 * this.ha1bias);
+        double hiddenLayerA2 = activationFunction(inputf1 * this.ha2a + inputf2 * this.ha2b + this.bias1 * this.ha2bias);
 
         // Calculation for output
-        double outputResult = activationFunction(hiddenLayerA1 * o1a + hiddenLayerA2 * o1b + bias3 * o1bias);
+        double outputResult = activationFunction(hiddenLayerA1 * this.o1a + hiddenLayerA2 * this.o1b + this.bias3 * this.o1bias);
         return outputResult;
 
     }
 
-    
+
     // Method used for user to input data to be trained to the neural network - data is entered in the form of a 3 X 4
     // truth table and so only binary operator emulation can be achieved with this neural network implementation
     public void inputTrainingData() {
@@ -305,19 +305,17 @@ public class neuralnetwork {
         System.out.println("Weights:");
 
         System.out.println("\nHidden Layer Neuron 1:");
-        System.out.println("Weight A: " + ha1a);
-        System.out.println("Weight B: " + ha1b);
-        System.out.println("Weight Bias: " + ha1bias);
-
+        System.out.println("Weight A: " + this.ha1a);
+        System.out.println("Weight B: " + this.ha1b);
+        System.out.println("Weight Bias: " + this.ha1bias);
         System.out.println("\nHidden Layer Neuron 2:");
-        System.out.println("Weight A: " + ha2a);
-        System.out.println("Weight B: " + ha2b);
-        System.out.println("Weight Bias: " + ha2bias);
-
+        System.out.println("Weight A: " + this.ha2a);
+        System.out.println("Weight B: " + this.ha2b);
+        System.out.println("Weight Bias: " + this.ha2bias);
         System.out.println("\nOutput Neuron:");
-        System.out.println("Weight A: " + o1a);
-        System.out.println("Weight B: " + o1b);
-        System.out.println("Weight Bias: " + o1bias);
+        System.out.println("Weight A: " + this.o1a);
+        System.out.println("Weight B: " + this.o1b);
+        System.out.println("Weight Bias: " + this.o1bias);
     }
 
 
