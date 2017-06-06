@@ -187,7 +187,7 @@ public class neuralnetwork {
             }
 
             for (int i = 0; i < 4; i++) {
-                error += Math.pow(outputc[i] - testNetwork(input1c[i], input2c[i]), 2);
+                error += Math.pow(outputc[i] - testNetwork(this.input1c[i], this.input2c[i]), 2);
             }
             error /= 4;
             System.out.println("Error:" + error);
@@ -223,52 +223,52 @@ public class neuralnetwork {
             String selection = read.nextLine();
 
             if (selection.equals("OR")) {
-                input1c[0] = 1;
-                input1c[1] = 1;
-                input1c[2] = 0;
-                input1c[3] = 0;
-                input2c[0] = 1;
-                input2c[1] = 0;
-                input2c[2] = 1;
-                input2c[3] = 0;
-                outputc[0] = 1;
-                outputc[1] = 1;
-                outputc[2] = 1;
-                outputc[3] = 0;
+                this.input1c[0] = 1;
+                this.input1c[1] = 1;
+                this.input1c[2] = 0;
+                this.input1c[3] = 0;
+                this.input2c[0] = 1;
+                this.input2c[1] = 0;
+                this.input2c[2] = 1;
+                this.input2c[3] = 0;
+                this.outputc[0] = 1;
+                this.outputc[1] = 1;
+                this.outputc[2] = 1;
+                this.outputc[3] = 0;
                 System.out.println("Or Operator Selected");
                 escape = true;
             }
 
             if (selection.equals("AND")) {
-                input1c[0] = 1;
-                input1c[1] = 1;
-                input1c[2] = 0;
-                input1c[3] = 0;
-                input2c[0] = 1;
-                input2c[1] = 0;
-                input2c[2] = 1;
-                input2c[3] = 0;
-                outputc[0] = 1;
-                outputc[1] = 0;
-                outputc[2] = 0;
-                outputc[3] = 0;
+                this.input1c[0] = 1;
+                this.input1c[1] = 1;
+                this.input1c[2] = 0;
+                this.input1c[3] = 0;
+                this.input2c[0] = 1;
+                this.input2c[1] = 0;
+                this.input2c[2] = 1;
+                this.input2c[3] = 0;
+                this.outputc[0] = 1;
+                this.outputc[1] = 0;
+                this.outputc[2] = 0;
+                this.outputc[3] = 0;
                 System.out.println("And Operator Selected");
                 escape = true;
             }
 
             if (selection.equals("XOR")) {
-                input1c[0] = 1;
-                input1c[1] = 1;
-                input1c[2] = 0;
-                input1c[3] = 0;
-                input2c[0] = 1;
-                input2c[1] = 0;
-                input2c[2] = 1;
-                input2c[3] = 0;
-                outputc[0] = 0;
-                outputc[1] = 1;
-                outputc[2] = 1;
-                outputc[3] = 0;
+                this.input1c[0] = 1;
+                this.input1c[1] = 1;
+                this.input1c[2] = 0;
+                this.input1c[3] = 0;
+                this.input2c[0] = 1;
+                this.input2c[1] = 0;
+                this.input2c[2] = 1;
+                this.input2c[3] = 0;
+                this.outputc[0] = 0;
+                this.outputc[1] = 1;
+                this.outputc[2] = 1;
+                this.outputc[3] = 0;
                 System.out.println("Exclusive Or Operator Selected");
                 escape = true;
             }
@@ -278,11 +278,11 @@ public class neuralnetwork {
                 System.out.println("Custom Input Selected");
                 for (int i = 0; i < 4; i++) {
                     System.out.println("Enter the first input for row # " + (i + 1));
-                    input1c[i] = read.nextInt();
+                    this.input1c[i] = read.nextInt();
                     System.out.println("Enter the second input for row # " + (i + 1));
-                    input2c[i] = read.nextInt();
+                    this.input2c[i] = read.nextInt();
                     System.out.println("Enter the output for row #" + (i + 1));
-                    outputc[i] = read.nextInt();
+                    this.outputc[i] = read.nextInt();
                 }
                 escape = true;
             }
