@@ -336,7 +336,7 @@ import java.util.Scanner;
 
                 public void enterWeights(){
                     Scanner read = new Scanner(System.in);
-                    System.out.println("Enter Weights:\n");
+                    System.out.println("\nEnter Weights:\n");
                     System.out.println("Enter value for Hidden Neuron 1 weight A:");
                     this.ha1a = read.nextDouble();
                     System.out.println("Enter value for Hidden Neuron 1 weight B:");
@@ -379,7 +379,13 @@ import java.util.Scanner;
                         // Calls method to prompt user to input data to be trained to the neural network
                         net.inputTrainingData();
 
-                        net.weightGenerator();
+                        System.out.println("\nCustom Weights y/n?");
+                        String weightsCustom = read.nextLine();
+                        if (weightsCustom.equals("y")){
+                            net.enterWeights();
+                        }else{
+                            net.weightGenerator();
+                        }
 
                         // Prints out Pre=Training Weights
                         System.out.println("\nGet weights y/n?");
