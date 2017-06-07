@@ -181,7 +181,7 @@ import java.util.Scanner;
 
                             double o1biasDelta = learningRate * o1biasGradient + momentum * alpha[8];
                             o1bias += o1biasDelta;
-                            alpha[0] = ha1aDelta;
+                            alpha[8] = ha1aDelta;
 
 
                         }
