@@ -335,8 +335,26 @@ import java.util.Scanner;
                 }
 
                 public void enterWeights(){
+                    Scanner read = new Scanner(System.in);
                     System.out.println("Enter Weights:\n");
-                    System.out.println()
+                    System.out.println("Enter value for Hidden Neuron 1 weight A:");
+                    this.ha1a = read.nextDouble();
+                    System.out.println("Enter value for Hidden Neuron 1 weight B:");
+                    this.ha1b = read.nextDouble();
+                    System.out.println("Enter value for Hidden Neuron 1 bias weight:");
+                    this.ha1bias = read.nextDouble();
+                    System.out.println("Enter value for Hidden Neuron 2 weight A:");
+                    this.ha2a = read.nextDouble();
+                    System.out.println("Enter value for Hidden Neuron 2 weight B:");
+                    this.ha2b = read.nextDouble();
+                    System.out.println("Enter value for Hidden Neuron bias weight:");
+                    this.ha2bias = read.nextDouble();
+                    System.out.println("Enter value for Output Neuron weight one:");
+                    this.o1a = read.nextDouble();
+                    System.out.println("Enter value for Output Neuron weight two:");
+                    this.o1b = read.nextDouble();
+                    System.out.println("Enter value for Output Neuron bias weight:");
+                    this.o1bias = read.nextDouble();
                 }
 
 
