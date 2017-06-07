@@ -43,15 +43,15 @@ import java.util.Scanner;
 
                     // Initializes all weights to random initial values, since these values are not constrained we multiply to
                     // increase the variability.
-                    ha1a = Math.random();
-                    ha1b = Math.random();
-                    ha1bias = Math.random();
-                    ha2a = Math.random();
-                    ha2b = Math.random();
-                    ha2bias = Math.random();
-                    o1a = Math.random();
-                    o1b = Math.random();
-                    o1bias = Math.random();
+                    this.ha1a = Math.random();
+                    this.ha1b = Math.random();
+                    this.ha1bias = Math.random();
+                    this.ha2a = Math.random();
+                    this.ha2b = Math.random();
+                    this.ha2bias = Math.random();
+                    this.o1a = Math.random();
+                    this.o1b = Math.random();
+                    this.o1bias = Math.random();
                 }
 
 
@@ -334,6 +334,11 @@ import java.util.Scanner;
                     System.out.println("\n");
                 }
 
+                public void enterWeights(){
+                    System.out.println("Enter Weights:\n");
+                    System.out.println()
+                }
+
 
                 public static void main(String[] args) {
                     String runSim = "y";
@@ -384,4 +389,3 @@ import java.util.Scanner;
                     }
                 }
             }
-            
