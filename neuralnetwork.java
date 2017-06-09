@@ -182,7 +182,7 @@ public class neuralnetwork {
 
 
     // Used for Backpropagation of weight adjustments.
-    public double backProp(double gradient, double alpha){
+    private double backProp(double gradient, double alpha){
         return learningRate * gradient + momentum * alpha;
     }
 
