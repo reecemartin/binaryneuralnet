@@ -148,43 +148,24 @@ public class neuralnetwork {
                 double o1biasGradient = outputLayerDelta;
 
                 // Backpropagation
-                double ha1aDelta = learningRate * ha1aGradient + momentum * alpha[0];
-                ha1a += ha1aDelta;
-                alpha[0] = ha1aDelta;
-
-                double ha1bDelta = learningRate * ha1bGradient + momentum * alpha[1];
-                ha1b += ha1bDelta;
-                alpha[1] = ha1bDelta;
-
-                double ha1biasDelta = learningRate * ha1biasGradient + momentum * alpha[2];
-                ha1bias += ha1biasDelta;
-                alpha[2] = ha1biasDelta;
-
-                double ha2aDelta = learningRate * ha2aGradient + momentum * alpha[3];
-                ha2a += ha2aDelta;
-                alpha[3] = ha2aDelta;
-
-                double ha2bDelta = learningRate * ha2bGradient + momentum * alpha[4];
-                ha2b += ha2bDelta;
-                alpha[4] = ha2bDelta;
-
-                double ha2biasDelta = learningRate * ha2biasGradient + momentum * alpha[5];
-                ha2bias += ha2biasDelta;
-                alpha[5] = ha2biasDelta;
-
-                double o1aDelta = learningRate * o1aGradient + momentum * alpha[6];
-                o1a += o1aDelta;
-                alpha[6] = o1aDelta;
-
-                double o1bDelta = learningRate * o1bGradient + momentum * alpha[7];
-                o1b += o1bDelta;
-                alpha[7] = o1bDelta;
-
-                double o1biasDelta = learningRate * o1biasGradient + momentum * alpha[8];
-                o1bias += o1biasDelta;
-                alpha[8] = ha1aDelta;
-
-
+                ha1a += backProp(ha1aGradient, alpha[0]);
+                alpha[0] = backProp(ha1aGradient, alpha[0]);
+                ha1b += backProp(ha1bGradient, alpha[1]);
+                alpha[1] = backProp(ha1bGradient, alpha[1]);
+                ha1bias += backProp(ha1biasGradient, alpha[2]);
+                alpha[2] = backProp(ha1biasGradient, alpha[2]);
+                ha2a += backProp(ha2aGradient, alpha[3]);
+                alpha[3] = backProp(ha2aGradient, alpha[3]);
+                ha2b += backProp(ha2bGradient, alpha[4]);
+                alpha[4] = backProp(ha2bGradient, alpha[4]);
+                ha2bias += backProp(ha2biasGradient, alpha[5]);
+                alpha[5] = backProp(ha2biasGradient, alpha[5]);
+                o1a += backProp(o1aGradient, alpha[6]);
+                alpha[6] = backProp(o1aGradient, alpha[6]);
+                o1b += backProp(o1bGradient, alpha[7]);
+                alpha[7] = backProp(o1bGradient, alpha[7]);
+                o1bias = backProp(o1biasGradient, alpha[8]);
+                alpha[8] = backProp(o1biasGradient, alpha[8]);
             }
 
             for (int i = 0; i < 4; i++) {
@@ -197,6 +178,12 @@ public class neuralnetwork {
         }
 
         System.out.println("\nReached " + threshold + " Mean Squared Error, in " + counter + " iterations.\n");
+    }
+
+
+    // Used for Backpropagation of weight adjustments.
+    public double backProp(double gradient, double alpha){
+        return learningRate * gradient + momentum * alpha;
     }
 
     // Method for Network Evaluation
