@@ -2,7 +2,7 @@
 
 - Modularize Weights and Neurons for later expansion
 - Add Graphs and UI
-- Add Diagram
+- Add Improved Diagrams
 
-- Streamline and Clean code
 - Multithread
+- Add Testing Functionality to test forementioned Multi-threaded performance
