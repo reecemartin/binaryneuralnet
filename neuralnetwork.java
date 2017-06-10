@@ -67,8 +67,11 @@ public class neuralnetwork {
 
         if (settingsSelector.equals("e")){
 
+            // The threshold of error deemed acceptable by the user.
             threshold = 0.0001;
+            // The rate at which the weights are changed in the Neural Network.
             learningRate = 0.5;
+            // The degree of influence that previous changes have on current ones.
             momentum = 0.2;
 
         }else {
@@ -98,6 +101,8 @@ public class neuralnetwork {
         }
 
         error /= 4;
+        
+        // Used to count the number of iterations required in training.
         int counter = 0;
 
         // Loop runs until we meet the user set threshold.
@@ -147,7 +152,7 @@ public class neuralnetwork {
                         input1c[i] * ha2a + input2c[i] * ha2b + bias1 * ha2bias) * outputLayerDelta;
                 double o1biasGradient = outputLayerDelta;
 
-                // Backpropagation
+                // Backpropagation for all weights
                 ha1a += backProp(ha1aGradient, alpha[0]);
                 alpha[0] = backProp(ha1aGradient, alpha[0]);
                 ha1b += backProp(ha1bGradient, alpha[1]);
