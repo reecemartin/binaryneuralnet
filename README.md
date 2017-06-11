@@ -1,5 +1,7 @@
 # binaryneuralnet
  A elementary feedforward multilayer perceptron Neural Network designed to pattern match basic binary operators such as And Or and Xor. The network will usually successfully converge when "hinted" values/ express settings are used. This is the best option for users interested in the functionality of the program who do not want to do a deep dive into the actual calculations and granular details of Neural Network Training.
+ 
+ Eventually the program will be fully implemented using Tensorflow in Python (tfneuralnetwork.py) for maximum performance for testing purposes, while the ground up Java code located in neuralnetwork.java will be used as a teaching and experimental low-level tool.
 
 # What is does:
 The Binary Operators AND, OR, and XOR are the basis for propositional logic which is fundamental to a great deal of topics in mathematics and computer science. When many university students take their first course in propositional logic and discrete mathematics they learn the truth tables for these operators, this Neural Network does just that. When given a truth table the Neural Network cannot correctly apply the operators in it's initial (untrained) state however, following proper training the Neural Network can "learn" the correct patterns for the different operators and apply them with a high degree of accuracy. 
