@@ -1,8 +1,9 @@
-- Reimplement in Tensor Flow
+- Reimplement in Tensor Flow (IN PROGRESS)
+- Add more granularity and teaching features to neuralnetwork.java
 
 - Modularize Weights and Neurons for later expansion
 - Add Graphs and UI
 - Add Improved Diagrams
 
 - Multithread
-- Add Testing Functionality to test forementioned Multi-threaded performance
+- Add Testing Functionality to test forementioned Multi-threaded performance (IN PROGRESS)
