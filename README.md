@@ -11,7 +11,10 @@ As an example if a user selects the "XOR" (Exclusive Or) option from the console
 # How it works:
 The basis of any Neural Network is a series of Neurons and Weights (connections with synaptic strengths between neurons)[see diagram]. A Neural Network may have i input neurons and o output neurons and some number of hidden neurons arranged in layers between the input and output neurons. When a Neural Network is initialized it's weights are set to random floating-point values which when given an input a is unlikely to produce a desired input b however, through the process of training the neural networks weights can be adjusted such that the network produces an output which is very near to the desired output b. This is achieved by combining several discrete processes iteratively. First on each iteration the error for the network is calculated using the Mean Squared Error (MSE), assuming the error rate is above the user selected threshold individual error is calculated across each weight using gradient descent (a process which can be likened to a ball rolling in a hilly valley trying to find the lowest point). At this point weights are updated backwards across the network from output to input (reverse feed-forward direction) using Backpropagation, and the process is repeated. 
 
-# Acknowlegements
+# Development Plan:
+Currently neuralnetwork.java functions completely while tfneuralnetwork.py (tf ~ Tensorflow) is in development, once tfneuralnetwork.py is fully functional it will inherit the user interface of neuralnetwork.java and be used purely for demonstration purposes. At this point neuralnetwork.java will be given more granular controls for use in experimentation and for teaching purposes.
+
+# Acknowlegements:
 This project is largely inspired by and based on information and techniques from Jeff Heaton's videos and lectures on Neural Networks posted on Youtube: https://www.youtube.com/user/HeatonResearch
 
 I also would like to acknowlege Ray Kurzweil's excellent book "How to Create a Mind" which provided inspiration for this project as well as a broad overview on Machine Learning. (Amazon Link: https://www.amazon.ca/How-Create-Mind-Thought-Revealed/dp/0143124048)
