@@ -10,9 +10,15 @@ input_b = [np.float32(0.0), np.float32(1.0), np.float32(0.0), np.float32(1.0)]
 outputs = [np.float32(0.0), np.float32(1.0), np.float32(1.0), np.float32(0.0)]
 
 # Initialize our weights
-weight_a = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
-weight_b = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
-biases = tf.Variable(tf.zeros([1]))
+weight_1a = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
+weight_1b = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
+weight_2a = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
+weight_2b = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
+weight_oa = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
+weight_ob = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
+bias_a = tf.Variable(tf.zeros([1]))
+bias_b = tf.Variable(tf.zeros([1]))
+bias_c = tf.Variable(tf.zeros([1]))
 
 # Initialize error tracking variable
 err_total = 0
