@@ -25,7 +25,9 @@ err_total = 0
 for i in range(3):
 
     # Neural Network Formula for Nodal Value 
-    output = weight_a * input_a[i] + weight_b * input_b[i] + biases
+    neuron_1 = weight_1a * input_a[i] + weight_1b * input_b[i] + bias_a
+    neuron_2 = weight_2a * input_a[i] + weight_2b * input_b[i] + bias_b
+    output = weight_oa * neuron_1 + weight_ob * neuron_2 + bias_c
     err_total += tf.square(output - outputs[i])
 
 # Divide error to get the mean for each configuration
