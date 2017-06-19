@@ -51,7 +51,19 @@ for i in range(10000):
     runtime.run(training)
     if i % 1000 == 0:
         print(np.float32((runtime.run(err_total)).tolist()[0]))
-        
+
+# Print the Weights to test
+
+print(np.float32((runtime.run(weight_1a)).tolist()[0]))
+print(np.float32((runtime.run(weight_1b)).tolist()[0]))
+print(np.float32((runtime.run(bias_a)).tolist()[0]))
+print(np.float32((runtime.run(weight_2a)).tolist()[0]))
+print(np.float32((runtime.run(weight_2b)).tolist()[0]))
+print(np.float32((runtime.run(bias_b)).tolist()[0]))
+print(np.float32((runtime.run(weight_oa)).tolist()[0]))
+print(np.float32((runtime.run(weight_ob)).tolist()[0]))
+print(np.float32((runtime.run(bias_c)).tolist()[0]))
+
 
 # print(np.float32((runtime.run(weight_a)).tolist()[0]) * 0 +
 #       np.float32((runtime.run(weight_b)).tolist()[0]) * 0 +
