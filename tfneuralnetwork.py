@@ -86,3 +86,38 @@ print(np.float32((runtime.run(bias_c)).tolist()[0]))
 # print(np.float32((runtime.run(weight_a)).tolist()[0]) * 1 +
 #       np.float32((runtime.run(weight_b)).tolist()[0]) * 1 +
 #        (np.float32((runtime.run(biases)).tolist()[0])))
+
+print("\n Outputs")
+
+print("1, 0")
+print(np.float32((runtime.run(weight_oa)).tolist()[0]) * (np.float32((runtime.run(weight_1a)).tolist()[0]) * 1 + 
+                                                          np.float32((runtime.run(weight_1b)).tolist()[0]) * 0 + 
+                                                          np.float32((runtime.run(bias_a)).tolist()[0])) + 
+      np.float32((runtime.run(weight_ob)).tolist()[0]) * (np.float32((runtime.run(weight_2a)).tolist()[0]) * 1 + 
+                                                          np.float32((runtime.run(weight_2b)).tolist()[0]) * 0 + 
+                                                          np.float32((runtime.run(bias_b)).tolist()[0])) + 
+      np.float32((runtime.run(bias_c)).tolist()[0]))
+print("1, 1")
+print(np.float32((runtime.run(weight_oa)).tolist()[0]) * (np.float32((runtime.run(weight_1a)).tolist()[0]) * 1 + 
+                                                          np.float32((runtime.run(weight_1b)).tolist()[0]) * 1 + 
+                                                          np.float32((runtime.run(bias_a)).tolist()[0])) + 
+      np.float32((runtime.run(weight_ob)).tolist()[0]) * (np.float32((runtime.run(weight_2a)).tolist()[0]) * 1 + 
+                                                          np.float32((runtime.run(weight_2b)).tolist()[0]) * 1 + 
+                                                          np.float32((runtime.run(bias_b)).tolist()[0])) + 
+      np.float32((runtime.run(bias_c)).tolist()[0]))
+print("0, 0")
+print(np.float32((runtime.run(weight_oa)).tolist()[0]) * (np.float32((runtime.run(weight_1a)).tolist()[0]) * 0 + 
+                                                          np.float32((runtime.run(weight_1b)).tolist()[0]) * 0 + 
+                                                          np.float32((runtime.run(bias_a)).tolist()[0])) + 
+      np.float32((runtime.run(weight_ob)).tolist()[0]) * (np.float32((runtime.run(weight_2a)).tolist()[0]) * 0 + 
+                                                          np.float32((runtime.run(weight_2b)).tolist()[0]) * 0 + 
+                                                          np.float32((runtime.run(bias_b)).tolist()[0])) + 
+      np.float32((runtime.run(bias_c)).tolist()[0]))
+print("0, 1")
+print(np.float32((runtime.run(weight_oa)).tolist()[0]) * (np.float32((runtime.run(weight_1a)).tolist()[0]) * 0 + 
+                                                          np.float32((runtime.run(weight_1b)).tolist()[0]) * 1 + 
+                                                          np.float32((runtime.run(bias_a)).tolist()[0])) + 
+      np.float32((runtime.run(weight_ob)).tolist()[0]) * (np.float32((runtime.run(weight_2a)).tolist()[0]) * 0 + 
+                                                          np.float32((runtime.run(weight_2b)).tolist()[0]) * 1 + 
+                                                          np.float32((runtime.run(bias_b)).tolist()[0])) + 
+      np.float32((runtime.run(bias_c)).tolist()[0]))
