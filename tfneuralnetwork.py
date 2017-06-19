@@ -24,11 +24,15 @@ bias_c = tf.Variable(tf.zeros([1]))
 err_total = 0
 for i in range(3):
 
-    # Neural Network Formula for Nodal Value 
+    # Neural Network Formula for Nodal Value
     neuron_1 = weight_1a * input_a[i] + weight_1b * input_b[i] + bias_a
     neuron_2 = weight_2a * input_a[i] + weight_2b * input_b[i] + bias_b
     output = weight_oa * neuron_1 + weight_ob * neuron_2 + bias_c
     err_total += tf.square(output - outputs[i])
+
+# Single Line Outputs
+# weight_oa * (weight_1a * input_a[i] + weight_1b * input_b[i] + bias_a) + weight_ob * (weight_2a * input_a[i] +
+# weight_2b * input_b[i] + bias_b) + bias_c
 
 # Divide error to get the mean for each configuration
 err_total /= 4
@@ -46,17 +50,18 @@ runtime.run(init)
 for i in range(10000):
     runtime.run(training)
     if i % 1000 == 0:
-        print(i, runtime.run(weight_a), runtime.run(weight_b), runtime.run(biases))
+        print(np.float32((runtime.run(err_total)).tolist()[0]))
+        
 
-print(np.float32((runtime.run(weight_a)).tolist()[0]) * 0 +
-      np.float32((runtime.run(weight_b)).tolist()[0]) * 0 +
-       (np.float32((runtime.run(biases)).tolist()[0])))
-print(np.float32((runtime.run(weight_a)).tolist()[0]) * 0 +
-      np.float32((runtime.run(weight_b)).tolist()[0]) * 1 +
-       (np.float32((runtime.run(biases)).tolist()[0])))
-print(np.float32((runtime.run(weight_a)).tolist()[0]) * 1 +
-      np.float32((runtime.run(weight_b)).tolist()[0]) * 0 +
-       (np.float32((runtime.run(biases)).tolist()[0])))
-print(np.float32((runtime.run(weight_a)).tolist()[0]) * 1 +
-      np.float32((runtime.run(weight_b)).tolist()[0]) * 1 +
-       (np.float32((runtime.run(biases)).tolist()[0])))
+# print(np.float32((runtime.run(weight_a)).tolist()[0]) * 0 +
+#       np.float32((runtime.run(weight_b)).tolist()[0]) * 0 +
+#        (np.float32((runtime.run(biases)).tolist()[0])))
+# print(np.float32((runtime.run(weight_a)).tolist()[0]) * 0 +
+#       np.float32((runtime.run(weight_b)).tolist()[0]) * 1 +
+#        (np.float32((runtime.run(biases)).tolist()[0])))
+# print(np.float32((runtime.run(weight_a)).tolist()[0]) * 1 +
+#       np.float32((runtime.run(weight_b)).tolist()[0]) * 0 +
+#        (np.float32((runtime.run(biases)).tolist()[0])))
+# print(np.float32((runtime.run(weight_a)).tolist()[0]) * 1 +
+#       np.float32((runtime.run(weight_b)).tolist()[0]) * 1 +
+#        (np.float32((runtime.run(biases)).tolist()[0])))
