@@ -54,14 +54,23 @@ for i in range(10000):
 
 # Print the Weights to test
 
+print("Weight 1 - A")
 print(np.float32((runtime.run(weight_1a)).tolist()[0]))
+print("Weight 1 - B")
 print(np.float32((runtime.run(weight_1b)).tolist()[0]))
+print("Bias A")
 print(np.float32((runtime.run(bias_a)).tolist()[0]))
+print("Weight 2 - A")
 print(np.float32((runtime.run(weight_2a)).tolist()[0]))
+print("Weight 2 - B")
 print(np.float32((runtime.run(weight_2b)).tolist()[0]))
+print("Bias B")
 print(np.float32((runtime.run(bias_b)).tolist()[0]))
+print("Weight Output - A")
 print(np.float32((runtime.run(weight_oa)).tolist()[0]))
+print("Weight Output - B")
 print(np.float32((runtime.run(weight_ob)).tolist()[0]))
+print("Bias C")
 print(np.float32((runtime.run(bias_c)).tolist()[0]))
 
 
