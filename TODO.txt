@@ -1,7 +1,7 @@
 - Reimplement in Tensor Flow (IN PROGRESS)
 - Add more granularity and teaching features to neuralnetwork.java
 
-- Modularize Weights and Neurons for later expansion
+- Modularize Weights and Neurons for later expansion (see https://github.com/reecemartin/variableneuralnet)
 - Add Graphs and UI
 - Add Improved Diagrams
 
