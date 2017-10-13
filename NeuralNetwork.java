@@ -2,9 +2,12 @@
  * Created by Reece Martin on 2017-05-08.
  */
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.util.Scanner;
+import java.io.*;
 
-public class neuralnetwork {
+public class NeuralNetwork implements java.io.Serializable {
 
     // Variables for correct (trained) input and output values
     private double[] input1c, input2c, outputc;
@@ -32,7 +35,7 @@ public class neuralnetwork {
     private double threshold, learningRate, momentum;
 
     // Constructor
-    private neuralnetwork() {
+    private NeuralNetwork() {
 
         // Ideal Values (To Be Used in Training)
         input1c = new double[4];
@@ -352,6 +355,38 @@ public class neuralnetwork {
 
 
     public static void main(String[] args) {
+        Scanner read = new Scanner(System.in);
+        System.out.println("\nImport trained network y/n?");
+        String importNet = read.nextLine();
+
+        if(importNet.equals("y")){
+            System.out.println("\nFile name? (no extensions or slashes)");
+            String path = "/" + read.nextLine() + ".ser";
+            try {
+                // Deserialize the object
+                FileInputStream fileIn = new FileInputStream(path);
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                NeuralNetwork n = (NeuralNetwork) in.readObject();
+                in.close();
+                fileIn.close();
+
+                n.printResults();
+
+                System.out.println("\nGet weights y/n?");
+                if(read.nextLine().equals("y")){
+                    n.printWeights();
+                }
+
+            }catch(IOException i) {
+                i.printStackTrace();
+                return;
+            }catch(ClassNotFoundException c) {
+                System.out.println("Neuralnetwork class not found");
+                c.printStackTrace();
+                return;
+            }
+        }
+
         String runSim = "y";
 
         while(runSim.equals("y")) {
@@ -359,7 +394,7 @@ public class neuralnetwork {
             if (runSim.equals("n")){
                 break;
             }
-            Scanner read = new Scanner(System.in);
+
             System.out.println("\nRun Simulation y/n?");
             runSim = read.nextLine();
             if (runSim.equals("n")){
@@ -367,7 +402,7 @@ public class neuralnetwork {
             }
 
             // Initializes a new neural network
-            neuralnetwork net = new neuralnetwork();
+            NeuralNetwork net = new NeuralNetwork();
 
             // Calls method to prompt user to input data to be trained to the neural network
             net.inputTrainingData();
@@ -402,6 +437,26 @@ public class neuralnetwork {
 
             if (getWeightResponse.equals("y")) {
                 net.printWeights();
+            }
+
+            // Serialize neural net
+            System.out.println("\nExport this trained network y/n?");
+            if (read.nextLine().equals("y")){
+                String path;
+                System.out.println("\nFile name? (no extensions or slashes)");
+                path = "/" + read.nextLine() + ".ser";
+
+                // Serialize the object
+                try {
+                    FileOutputStream fileOut = new FileOutputStream(path);
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(net);
+                    out.close();
+                    fileOut.close();
+                    System.out.println("\nSerialized data is saved in " + path);
+                }catch(IOException i) {
+                    i.printStackTrace();
+                }
             }
         }
     }
