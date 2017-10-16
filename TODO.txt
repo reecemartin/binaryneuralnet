@@ -7,5 +7,3 @@
 
 - Multithread
 - Add Testing Functionality to test forementioned Multi-threaded performance (IN PROGRESS)
-
--Serializable
